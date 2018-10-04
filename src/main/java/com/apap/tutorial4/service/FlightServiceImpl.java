@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.apap.tutorial4.model.FlightModel;
-import com.apap.tutorial4.model.PilotModel;
 import com.apap.tutorial4.repository.FlightDB;
 
 /*

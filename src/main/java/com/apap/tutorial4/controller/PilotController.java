@@ -46,15 +46,25 @@ public class PilotController {
 	@RequestMapping(value = "/pilot/view")
 	private String viewPilot(@RequestParam("licenseNumber") String licenseNumber, Model model) {
 		PilotModel pilot = pilotService.getPilotDetailByLicenseNumber(licenseNumber);
-		model.addAttribute("pilot", pilot);
-		return "view-pilot";
+		if (pilot == null) {
+			return "error";
+		}
+		else {
+			model.addAttribute("pilot", pilot);
+			return "view-pilot";
+		}
 	}
 	
 	 @RequestMapping(value = "/pilot/update/{id}", method = RequestMethod.GET)
 	 private String updatePilot(@PathVariable(value = "id") Long id, Model model) {
-	    PilotModel pilot = pilotService.getPilotById(id);
-	    model.addAttribute("pilot", pilot);
-	    return "update-pilot";
+		 PilotModel pilot = pilotService.getPilotById(id);
+		 if (pilot == null) {
+			return "error";
+		}
+		else {
+			model.addAttribute("pilot", pilot);
+		    return "update-pilot";
+		}
 	 }
 
 	 @RequestMapping(value = "/pilot/update/{id}", method = RequestMethod.POST)
