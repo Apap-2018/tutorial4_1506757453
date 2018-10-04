@@ -26,6 +26,7 @@
 		
 		<br>
 		<a th:href="@{'/flight/add/' + ${pilot.licenseNumber}}">Add Flight</a>
-		<a th:href="@{'/pilot/delete?licenseNumber=' + ${pilot.licenseNumber}}">Delete Pilot</a>
+		<a th:href="@{'/pilot/update/' + ${pilot.id}}">Update Pilot</a>
+		<a th:href="@{'/pilot/delete/' + ${pilot.id}}">Delete Pilot</a>
 	</body>
 </html>

@@ -49,4 +49,27 @@ public class FlightController {
 		return "view-flight";
 	}
 	
+	@RequestMapping(value = "/flight/delete/{id}", method = RequestMethod.GET)
+    private String deleteFlight(@PathVariable(value = "id") Long id) {
+	    flightService.deleteFlightById(id);
+        return "home";
+	}
+
+	 @RequestMapping(value = "/flight/update/{id}", method = RequestMethod.GET)
+	 private String updateFlight(@PathVariable(value = "id") Long id, Model model) {
+	    FlightModel flight = flightService.getFlightById(id);
+	    
+	    model.addAttribute("flight", flight);
+	    model.addAttribute("pilots", ((PilotService) pilotService).getPilotDb().findAll());
+	    return "update-flight";
+	 }
+
+	 @RequestMapping(value = "/flight/update/{id}", method = RequestMethod.POST)
+	 private String updatePilotSubmit(@PathVariable(value = "id") Long id, @ModelAttribute FlightModel flight) {
+         flight.setId(id);
+		 flightService.updateFlight(flight);
+         
+	     return "add";
+	 }
+	
 }
