@@ -78,7 +78,7 @@ public class PilotController {
 	 @RequestMapping(value = "/pilot/delete/{id}")
 	 private String deletePilot(@PathVariable(value = "id") Long id) {
 	     pilotService.deletePilotById(id);
-	     return "home";
+	     return "delete";
 	 }
 	
 }

@@ -1,9 +1,13 @@
 package com.apap.tutorial4.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.apap.tutorial4.model.FlightModel;
 import com.apap.tutorial4.model.PilotModel;
 import com.apap.tutorial4.repository.PilotDB;
 
@@ -43,7 +47,12 @@ public class PilotServiceImpl implements PilotService{
 	
 	@Override 
 	public void deletePilotById(Long id) {
+//		List<FlightModel> pilotFlight = pilotDb.getOne(id).getPilotFlight();
+//		for (int i=0; i < pilotFlight.size(); i++) {
+//			pilotFlight.remove(i);
+//		}
 		pilotDb.deleteById(id);
+		
 	}
 	
 	public PilotDB getPilotDb() {
